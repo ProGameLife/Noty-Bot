@@ -83,21 +83,3 @@ async def on_ready():
 
 
 client.run(discord_Token)
-
-"""
-if loads(response_channel.text)['data'][0]['user_login'] == 'kimdoe':
-    await channel.send(kimdo + ment + '\n https://www.twitch.tv/' + x)
-    print("kimdo")
-    y = True
-elif loads(response_channel.text['data'][0]['game_id'] == '21779') and \
-        loads(response_channel.text['data'][0]['user_login'] == 'aba4647'):
-    await channel.send(ralro + ment + '\n https://www.twitch.tv/' + x)
-    print("ralro")
-    y = True
-elif loads(response_channel.text['data'][0]['game_id'] == '491931') and \
-        loads(response_channel.text['data'][0]['user_login'] == 'sal_gu'):
-    await channel.send(salgu + ment + '\n https://www.twitch.tv/' + x)
-    print("salgu")
-    y = True
-else:
-"""
