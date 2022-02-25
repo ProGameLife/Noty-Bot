@@ -20,8 +20,9 @@ kimdo = '<@&945902518704156702>'
 salgu = '<@&945916718226747413>'
 twitchID = ['viichan6', 'cotton__123', 'jingburger', 'vo_ine', 'lilpaaaaaa', 'gosegugosegu', 'kimdoe', 'sal_gu', 'aba4647']
 check = [False, False, False, False, False, False, False, False, False]
-
-
+lastgameid = ['', '', '', '', '', '', '', '', '']
+newgameid = ['', '', '', '', '', '', '', '', '']
+cateupdate = [False, False, False, False, False, False, False, False, False]
 @client.event
 async def on_ready():
     print("ready")
@@ -35,7 +36,11 @@ async def on_ready():
 
     # 트위치 api 2차인증
     oauth_key = requests.post(
-        "https://id.twitch.tv/oauth2/token?client_id=" + twitch_Client_ID + "&client_secret=" + twitch_Client_secret + "&grant_type=client_credentials")
+        "https://id.twitch.tv/oauth2/token?client_id="
+        + twitch_Client_ID
+        + "&client_secret="
+        + twitch_Client_secret
+        + "&grant_type=client_credentials")
     access_token = loads(oauth_key.text)["access_token"]
     token_type = 'Bearer '
     authorization = token_type + access_token
@@ -57,6 +62,11 @@ async def on_ready():
                 category = twitch_channel_response['game_name']
                 title = twitch_channel_response['title']
                 link = ment + '\nhttps://www.twitch.tv/' + x
+                newgameid[i] = twitch_channel_response['game_id']
+
+                if not (lastgameid[i] == newgameid[i]):
+                    lastgameid[i] = newgameid[i]
+                    check[i] = False
 
                 if not (twitch_channel_response['type'] == 'live' and check[i] is False):
                     continue
