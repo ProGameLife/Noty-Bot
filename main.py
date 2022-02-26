@@ -22,7 +22,8 @@ twitchID = ['viichan6', 'cotton__123', 'jingburger', 'vo_ine', 'lilpaaaaaa', 'go
 check = [False, False, False, False, False, False, False, False, False]
 lastgameid = ['', '', '', '', '', '', '', '', '']
 newgameid = ['', '', '', '', '', '', '', '', '']
-cateupdate = [False, False, False, False, False, False, False, False, False]
+
+
 @client.event
 async def on_ready():
     print("ready")
@@ -64,7 +65,7 @@ async def on_ready():
                 link = ment + '\nhttps://www.twitch.tv/' + x
                 newgameid[i] = twitch_channel_response['game_id']
 
-                if not (lastgameid[i] == newgameid[i]):
+                if not (lastgameid[i] == newgameid[i] and twitch_channel_response['user_login'] != 'kimdoe'):
                     lastgameid[i] = newgameid[i]
                     check[i] = False
 
@@ -73,7 +74,8 @@ async def on_ready():
 
                 if twitch_channel_response['user_login'] == 'kimdoe':
                     await channel.send(kimdo + title + '\n' + category + ' ' + link)
-                elif twitch_channel_response['game_id'] == '21779' and \
+                elif (twitch_channel_response['game_id'] == '21779'
+                        or twitch_channel_response['game_id'] == '509658') and \
                         twitch_channel_response['user_login'] == 'aba4647':
                     await channel.send(ralro + title + '\n' + category + ' ' + link)
                 elif twitch_channel_response['game_id'] == '491931' and \
