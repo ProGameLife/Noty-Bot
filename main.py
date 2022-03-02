@@ -65,9 +65,10 @@ async def on_ready():
                 link = ment + '\nhttps://www.twitch.tv/' + x
                 newgameid[i] = twitch_channel_response['game_id']
 
-                if not (lastgameid[i] == newgameid[i] and twitch_channel_response['user_login'] != 'kimdoe'):
+                if not (lastgameid[i] == newgameid[i]): #이전 카테랑 같고 김도일 경우 지나지 않는다
                     lastgameid[i] = newgameid[i]
-                    check[i] = False
+                    if not(twitch_channel_response['user_login'] == 'kimdoe'):
+                        check[i] = False
 
                 if not (twitch_channel_response['type'] == 'live' and check[i] is False):
                     continue
@@ -85,12 +86,10 @@ async def on_ready():
                     await channel.send(title + '\n' + category + ' ' + link)
                     print("Online")
                 check[i] = True
-                print(x)
             except:
-                print("Offline")
                 check[i] = False
 
-            await asyncio.sleep(10)
+            await asyncio.sleep(2)
         await asyncio.sleep(100)
 
 
