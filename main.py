@@ -18,6 +18,7 @@ ment = '방송 켰다 드가자~'
 ralro = '<@&945893180656734239>'
 kimdo = '<@&945902518704156702>'
 salgu = '<@&945916718226747413>'
+ine = '<@950017532918632468>'
 twitchID = ['viichan6', 'cotton__123', 'jingburger', 'vo_ine', 'lilpaaaaaa', 'gosegugosegu', 'kimdoe', 'sal_gu', 'aba4647']
 check = [False, False, False, False, False, False, False, False, False]
 lastgameid = ['', '', '', '', '', '', '', '', '']
@@ -82,9 +83,10 @@ async def on_ready():
                 elif twitch_channel_response['game_id'] == '491931' and \
                         twitch_channel_response['user_login'] == 'sal_gu':
                     await channel.send(salgu + title + '\n' + category + ' ' + link)
+                elif twitch_channel_response['user_login'] == 'vo_ine':
+                    await channel.send(ine + title + '\n' + category + ' ' + link)
                 else:
                     await channel.send(title + '\n' + category + ' ' + link)
-                    print("Online")
                 check[i] = True
             except:
                 check[i] = False
