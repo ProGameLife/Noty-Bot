@@ -4,7 +4,6 @@ import discord
 import requests
 import asyncio
 from json import loads
-from prisma import Prisma
 
 client = discord.Client()
 load_dotenv(verbose=True)
